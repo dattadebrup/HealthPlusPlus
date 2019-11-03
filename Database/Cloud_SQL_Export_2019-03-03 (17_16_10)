@@ -1,0 +1,139 @@
+-- MySQL dump 10.13  Distrib 5.7.14, for Linux (x86_64)
+--
+-- Host: localhost    Database: mysql
+-- ------------------------------------------------------
+-- Server version	5.7.14-google-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `sihf`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `sihf` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `sihf`;
+
+--
+-- Table structure for table `dis`
+--
+
+DROP TABLE IF EXISTS `dis`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dis` (
+  `disease` varchar(50) DEFAULT NULL,
+  `food` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dis`
+--
+
+LOCK TABLES `dis` WRITE;
+/*!40000 ALTER TABLE `dis` DISABLE KEYS */;
+INSERT INTO `dis` VALUES ('diabetes','Low calorie drinks'),('diabetes','Berries'),('diabetes','Melon'),('diabetes','fruits'),('swineflu','cuscutaa'),('dengue','papaya'),('dengue','apples'),('dengue','oranges'),('cardiovascular disease','beetroot'),('cardiovascular disease','carrot'),('kidney disease','drink lots of water'),('kidney disease','coriander'),('malaria','carrot'),('malaria','spinach'),('asthma\'','vit D rich food\''),('asthma\'','carrots and leafy vegetables\''),('asthma\'','spinach and pumpkin seeds\''),('asthma\'','broccoli\''),('decubitus ulcer\'','bread\''),('decubitus ulcer\'','potatoes\''),('decubitus ulcer\'','rice\''),('dehydration\'','muskmelon\''),('dehydration\'','watermelon\''),('dehydration\'','cucumber\''),('dehydration\'','water\''),('dependence\'','nuts\''),('dependence\'','beans\''),('dependence\'','low fat dairy\''),('failure heart\'','fish\''),('failure heart\'','eggs\''),('failure heart\'','milk\''),('gastroenteritis\'','fenugeek\''),('gastroenteritis\'','curd\''),('gastroenteritis\'','legumes\''),('hepatitis B\'','skinless chicken\''),('hepatitis B\'','olive oil\''),('hepatitis B\'','avocados\''),('manic disorder\'','herbal tea\''),('manic disorder\'','probiotics\''),('manic disorder\'','beans\''),('schizophrenia\'','omega-3 fats\''),('schizophrenia\'','fish\''),('diabetes\'','brown rice\''),('diabetes\'','white pasta\''),('diabetes\'','bran cereals\''),('lung cancer\'','whole grains\''),('lung cancer\'','limit sweets\''),('blood cancer\'','olive oil\''),('blood cancer\'','low fat dairy\''),('blood cancer\'','capsicum\''),('pneumonia\'','leafy vegetables\''),('pneumonia\'','salmon\''),('pneumonia\'','tuna\''),('HIV\'','fruits\''),('HIV\'','legumes\''),('HIV\'','whole grains\''),('migraine\'','chocolate\''),('migraine\'','cheeze\''),('migraine\'','caffeine\''),('Thyroid\'','cabbage\''),('Thyroid\'','sprouts\''),('Thyroid\'','spinach\''),('cervical\'','sweet potatoes\''),('cervical\'','pumpkin\''),('cervical\'','beans\''),('dengue\'','papaya leaves\''),('dengue\'','apples\''),('dengue\'','pomegranate\''),('malaria\'','porridge\''),('malaria\'','onion\''),('malaria\'','ginger\''),('malaria\'','whole grain cereals\''),('chicken pox\'','juices\''),('chicken pox\'','tea\''),('chicken pox\'','melon\'');
+/*!40000 ALTER TABLE `dis` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `history`
+--
+
+DROP TABLE IF EXISTS `history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `history` (
+  `lat` decimal(10,8) NOT NULL,
+  `long_n` decimal(11,8) NOT NULL,
+  `disease` varchar(50) DEFAULT NULL,
+  `utime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `userid` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `history`
+--
+
+LOCK TABLES `history` WRITE;
+/*!40000 ALTER TABLE `history` DISABLE KEYS */;
+INSERT INTO `history` VALUES (70.00000000,85.00000000,'dengue','2009-05-18 00:00:00',1),(70.00000000,85.00000000,'dengue','2009-05-19 00:00:00',2),(70.00000000,85.00000000,'swineflu','2009-05-19 00:00:00',3),(70.00000000,185.00000000,'chickenpox','2009-05-19 00:00:00',4),(70.00000000,185.00000000,'cold','2009-05-19 00:00:00',5),(70.00000000,185.00000000,'diabetes','2009-05-20 00:00:00',6),(40.00000000,40.00000000,'swineflu','1970-01-01 00:00:01',1);
+/*!40000 ALTER TABLE `history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `notification`
+--
+
+DROP TABLE IF EXISTS `notification`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `notification` (
+  `lat` decimal(10,8) DEFAULT NULL,
+  `long_n` decimal(11,8) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `local_disease` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `timestmp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `notification`
+--
+
+LOCK TABLES `notification` WRITE;
+/*!40000 ALTER TABLE `notification` DISABLE KEYS */;
+INSERT INTO `notification` VALUES (75.00000000,160.00000000,'alert','ebola','Ebola Virus Disease (EVD) is a rare and deadly disease in people and nonhuman primates. People can get EVD through direct contact with an infected animal (bat or nonhuman primate) or a sick or dead person infected with Ebola virus.','2019-03-03 08:06:59'),(15.00000000,140.00000000,'alert','swine flu','swine flu is spreading in your area use masks wash your hands Wash hands constantly to avoid swine flu. Anything you touch may be affected, so keeping hands clean will help you avoid infection. ','2019-03-03 04:15:22'),(15.00000000,140.00000000,'alert','birdflu','Bird flu, or avian influenza, is a viral infection spread from bird to bird. Currently, a particularly deadly strain of bird flu -- H5N1 -- continues to spread among poultry in Egypt and in certain parts of Asia.','2019-03-03 08:19:18'),(15.00000000,140.00000000,'policy','National Health Mission','a fortified monitoring and evaluation system for','2018-03-11 08:10:06'),(55.00000000,160.00000000,'policy','NTCP','Government of India launched the National Tobacco Control Programme (NTCP) in the year 2007-08 during the 11th Five-Year-Plan, with the aim to create awareness about the harmful effects of tobacco consumption','2019-03-03 08:03:18');
+/*!40000 ALTER TABLE `notification` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `userid` bigint(20) NOT NULL,
+  `lat` decimal(10,8) DEFAULT NULL,
+  `long_n` decimal(11,8) DEFAULT NULL,
+  `uname` varchar(50) DEFAULT NULL,
+  `DOB` date DEFAULT NULL,
+  `Occupation` varchar(50) DEFAULT NULL,
+  `Gender` char(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,12.00000000,123.00000000,'abhinav','1998-12-22','Data Analyst','M'),(2,12.00000000,123.00000000,'Himanshu','1998-10-22','Data Analyst','M'),(3,40.00000000,40.00000000,'kaleem','1997-09-15','Data Analyst','M'),(4,65.00000000,140.00000000,'debrup','1996-09-30','Developer','M'),(5,12.00000000,150.00000000,'muskan','1995-07-02','Developer','F'),(6,12.00000000,150.00000000,'dakshita','1995-09-17','Developer','F');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-03-03 11:47:01
